@@ -1,0 +1,154 @@
+﻿<mah:MetroWindow x:Class="FAS.View.Login_Window"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:local="clr-namespace:FAS.View" 
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        xmlns:c="clr-namespace:FAS.Common"
+        xmlns:mvvm="http://www.galasoft.ch/mvvmlight"
+        xmlns:Dialog="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
+        Dialog:DialogParticipation.Register="{Binding}"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen"
+        Title="登录" Height="500" Width="650">
+
+    
+    <mah:MetroWindow.DataContext>
+        <Binding Path="Login" Source="{StaticResource Locator}" ></Binding>
+    </mah:MetroWindow.DataContext>
+    <i:Interaction.Behaviors>
+        <c:WindowBehavior Close="{Binding ToClose}"/>
+    </i:Interaction.Behaviors>
+    
+    <Window.Resources>
+        <Style TargetType="TextBox" x:Key="UserNameTextBoxStyle">
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" 
+                                    BorderThickness="{TemplateBinding BorderThickness}" 
+                                    Background="{TemplateBinding Background}" 
+                                    SnapsToDevicePixels="True"
+                                    CornerRadius="5">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="40"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Border BorderBrush="#DDD" BorderThickness="0,0,1,0" Margin="0,8,5,8"/>
+                                <TextBlock Text="请输入用户名" Grid.Column="1" VerticalAlignment="Center" Foreground="#BBB"
+                                           Name="markText" Visibility="Collapsed" FontSize="12" Margin="2,0"/>
+                                <iconPacks:PackIconModern Kind="UserTie"  Margin="5"></iconPacks:PackIconModern>
+
+                                <ScrollViewer x:Name="PART_ContentHost" Focusable="false"
+                                                  HorizontalScrollBarVisibility="Hidden" 
+                                                  VerticalScrollBarVisibility="Hidden"
+                                                  Grid.Column="1"
+                                                  VerticalAlignment="Center" MinHeight="20"/>
+                            </Grid>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Opacity" TargetName="border" Value="0.56"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="#FF7EB4EA"/>
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="#FF569DE5"/>
+                            </Trigger>
+                            <DataTrigger Binding="{Binding Path=Text,RelativeSource={RelativeSource Mode=Self}}" Value="">
+                                <Setter Property="Visibility" TargetName="markText" Value="Visible"/>
+                            </DataTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="PasswordBox" x:Key="PasswordBoxStyle">
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="PasswordBox">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" 
+                                    BorderThickness="{TemplateBinding BorderThickness}" 
+                                    Background="{TemplateBinding Background}" 
+                                    SnapsToDevicePixels="True"
+                                    CornerRadius="5">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="40"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Border BorderBrush="#DDD" BorderThickness="0,0,1,0" Margin="0,8,5,8"/>
+                                <TextBlock Text="请输入密码" Grid.Column="1" VerticalAlignment="Center" Foreground="#BBB"
+                                           Name="markText" Visibility="Collapsed" FontSize="12" Margin="2,0"/>
+
+                                <iconPacks:PackIconBootstrapIcons  Kind="KeyFill"  Margin="5"></iconPacks:PackIconBootstrapIcons>
+                                <ScrollViewer x:Name="PART_ContentHost" Focusable="false"
+                                                  HorizontalScrollBarVisibility="Hidden" 
+                                                  VerticalScrollBarVisibility="Hidden"
+                                                  Grid.Column="1"
+                                                  VerticalAlignment="Center" MinHeight="20"/>
+                            </Grid>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Opacity" TargetName="border" Value="0.56"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="#FF7EB4EA"/>
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="#FF569DE5"/>
+                            </Trigger>
+                            <!--PasswordBox需要绑定到ViewModel才行-->
+                            <DataTrigger Binding="{Binding Path=mLogin_Window_Model.Password}" Value="">
+                                <Setter Property="Visibility" TargetName="markText" Value="Visible"/>
+                            </DataTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <mah:MetroWindow.Background>
+        <ImageBrush ImageSource="/FAS;component/Images/Login.jpg" Stretch="Uniform"></ImageBrush>
+    </mah:MetroWindow.Background>
+    
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <TextBlock Text="欢迎您！" FontSize="35" HorizontalAlignment="Center"
+                       Margin="20" ></TextBlock>
+
+
+        <TextBox Margin="20"  Width="200" Height="30" Style="{StaticResource UserNameTextBoxStyle}"
+                     Text="{Binding mLogin_Window_Model.UserName, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged,
+                    ValidatesOnDataErrors=True, NotifyOnValidationError=True}"></TextBox>
+
+        <PasswordBox Margin="10"  Width="200" Height="30" Style="{StaticResource PasswordBoxStyle}"
+                     c:PasswordBoxHelper.Password="{Binding mLogin_Window_Model.Password , Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}">
+            <i:Interaction.Behaviors>
+                <c:PasswordBoxBehavior/>
+            </i:Interaction.Behaviors>
+        </PasswordBox>
+
+        <Button x:Name="Login_BTN" Content="登录"
+                    Margin="30" Width="150">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Click">
+                    <mvvm:EventToCommand Command="{Binding Login_Command}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Button>
+    </StackPanel>
+
+</mah:MetroWindow>

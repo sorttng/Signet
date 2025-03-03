@@ -1,0 +1,51 @@
+# 编译输出目录
+[Bb]in/
+[Oo]bj/
+# 排除特定子目录或文件（使用 ! 符号）
+!*/[Bb]in/Debug/Cryptograph.Key
+!*/[Bb]in/Debug/license.Key
+!*/[Bb]in/Debug/logo.ico
+!*/[Bb]in/Debug/RsaPrivateKey
+# Visual Studio 用户特定文件
+*.user
+*.userosscache
+*.suo
+*.vssscc
+*.vspscc
+
+# Visual Studio 缓存目录
+.vs/
+
+# NuGet 包目录（旧版 NuGet 使用）
+packages/
+
+# 自动恢复的 NuGet 包路径（现代项目通常不需要）
+[Nn]u[Gg]et[Cc]ache/
+
+# 日志文件
+*.log
+*.csv
+*.tsv
+
+# 本地临时文件
+*.tmp
+*.cache
+
+# Rider/JetBrains IDE 文件
+.idea/
+*.sln.im
+
+# VS Code 目录
+.vscode/
+
+# 操作系统自动生成的文件
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# 发布/打包输出
+[Bb]uild/
+[Pp]ublish/
+*.nupkg
+*.msi
+*.zip

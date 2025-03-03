@@ -1,0 +1,119 @@
+﻿<Page x:Class="FAS.View.Setting_View"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:FAS.View"
+      xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+      xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+      xmlns:converter="clr-namespace:FAS.Converter"
+      xmlns:ui="clr-namespace:FAS.UI"
+      xmlns:dotNetKitControls="clr-namespace:DotNetKit.Windows.Controls;assembly=DotNetKit.Wpf.AutoCompleteComboBox"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Setting_View">
+    <Page.DataContext>
+        <Binding Path="Setting" Source="{StaticResource Locator}"></Binding>
+    </Page.DataContext>
+
+    <Page.Resources>
+        <converter:ThemeConverter x:Key="ThemeConverter"></converter:ThemeConverter>
+    </Page.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <GroupBox Header="主题设置" Grid.Row="0">
+            <StackPanel Orientation="Horizontal">
+                <Label VerticalAlignment="Center">主题颜色：</Label>
+                <ComboBox Margin="5" Width="150" Height="40"
+                      ItemsSource="{Binding mSetting_Model.AccentColors, Mode=OneWay}"
+                      SelectedItem="{Binding mSetting_Model.Sel_AccentColors,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Ellipse Width="15" Height="15"
+                             Fill="{Binding ColorBrush, Mode=OneWay}"
+                             Stroke="{Binding BorderColorBrush, Mode=OneWay}"
+                             StrokeThickness="1"/>
+                                <TextBlock Text="{Binding Name}" Margin="5" ></TextBlock>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <i:InvokeCommandAction Command="{Binding ChangeColors_Command}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </ComboBox>
+
+                <Label VerticalAlignment="Center">主题风格：</Label>
+                <mah:ToggleSwitch Margin="5"                
+                IsOn="{Binding mSetting_Model.IsOn, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                OnContent="Light" OffContent="Dark"
+                Command="{Binding ChangeThemes_Command}"></mah:ToggleSwitch>
+            </StackPanel>
+
+        </GroupBox>
+
+        <GroupBox Header="语言设置" Grid.Row="1">
+            <Button Width="80" Height="30">语言
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <i:InvokeCommandAction Command="{Binding ChangeLanguage_Command}"></i:InvokeCommandAction>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+        </GroupBox>
+
+        <GroupBox Header="地区设置" Grid.Row="2">
+            <StackPanel>
+                <!--<ComboBox x:Name="cmbxPortList" Margin="5" Width="200" 
+                          ItemsSource="{Binding mSetting_Model.Locations,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                          Text="{Binding mSetting_Model.FilterText,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                          DisplayMemberPath="LocationNameZh" SelectedValuePath="LocationNameEn" 
+                          IsEditable="True" IsTextSearchEnabled="False">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="DropDownOpened">
+                            <i:InvokeCommandAction Command="{Binding ComboBoxPortDropDownOpened}" CommandParameter="{Binding ElementName=cmbxPortList}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </ComboBox>-->
+
+
+                <dotNetKitControls:AutoCompleteComboBox x:Name="cmbxPortList" Margin="5" Width="200" 
+                          ItemsSource="{Binding mSetting_Model.Locations,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                          SelectedItem="{Binding mSetting_Model.Sel_Location,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                          TextSearch.TextPath="LocationNameZh"
+                          DisplayMemberPath="LocationNameZh" 
+                          SelectedValuePath="Adcode">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <i:InvokeCommandAction Command="{Binding Location_Changed_Command}" CommandParameter="{Binding ElementName=cmbxPortList}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                    <ComboBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel />
+                        </ItemsPanelTemplate>
+                    </ComboBox.ItemsPanel>
+                </dotNetKitControls:AutoCompleteComboBox>
+
+                <!--<mah:MultiSelectionComboBox 
+                    Margin="5" Width="200" IsTextSearchEnabled="True"
+                    ItemsSource="{Binding mSetting_Model.Locations}" DisplayMemberPath="LocationNameZh" SelectedValuePath="LocationNameEn" 
+                    IsEditable="True" IsDropDownOpen="True">
+                    
+                </mah:MultiSelectionComboBox>-->
+            </StackPanel>
+
+        </GroupBox>
+
+    
+    </Grid>
+</Page>
