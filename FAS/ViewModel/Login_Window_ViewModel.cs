@@ -11,6 +11,8 @@ using FAS.Common;
 using MahApps.Metro.Controls.Dialogs;
 using FAS.View;
 using NLog;
+using SqlSugar;
+
 namespace FAS.ViewModel
 {
     public class Login_Window_ViewModel: ViewModelBase
@@ -30,6 +32,7 @@ namespace FAS.ViewModel
         LoginHelper.LoginOpration mloginOpration;
         public Login_Window_ViewModel(LoginHelper.LoginOpration loginOpration)
         {
+            
             mloginOpration = loginOpration;
 
             _dialogCoordinator = DialogCoordinator.Instance;
@@ -39,7 +42,7 @@ namespace FAS.ViewModel
             mLogin_Window_Model = new Login_Window_Model()
             {
                 UserName = "user1",
-                Password = "",
+                Password = "123456",
             };
 
             //RegisterHelper.GenerateCryptographFile();
@@ -105,25 +108,25 @@ namespace FAS.ViewModel
             //{
             //    #region 输入证书弹窗
             //    var result = _dialogCoordinator.ShowModalLoginExternal(this, "未激活", "请输入您的激活码！",
-            //new LoginDialogSettings(((Login_Window)(Application.Current.MainWindow)).MetroDialogOptions)
-            //{
-            //    InitialUsername = RegisterHelper.ReadCryptographFile(),
-            //    UsernameWatermark = "设备编码",
-            //    EnablePasswordPreview = true,
-            //    PasswordWatermark = "请输入激活码",
-            //    AffirmativeButtonText = "激活",
-            //});
+            //    new LoginDialogSettings(((Login_Window)(Application.Current.MainWindow)).MetroDialogOptions)
+            //    {
+            //        InitialUsername = RegisterHelper.ReadCryptographFile(),
+            //        UsernameWatermark = "设备编码",
+            //        EnablePasswordPreview = true,
+            //        PasswordWatermark = "请输入激活码",
+            //        AffirmativeButtonText = "激活",
+            //    });
             //    #endregion
 
-            //string mes = string.Empty;
-            //GlobalInfo.registerState = 
-            //RegisterHelper.CheckLicense(result.Password, out mes);
-            //ShowMessage("提示！", mes);
-            //logger.Info(mes);
-            //if (!GlobalInfo.registerState)
-            //{
-            //    return;
-            //}
+            //    string mes = string.Empty;
+            //    GlobalInfo.registerState =
+            //    RegisterHelper.CheckLicense(result.Password, out mes);
+            //    ShowMessage("提示！", mes);
+            //    logger.Info(mes);
+            //    if (!GlobalInfo.registerState)
+            //    {
+            //        return;
+            //    }
             //}
 
             if (mLogin_Window_Model.UserName == string.Empty
@@ -149,7 +152,39 @@ namespace FAS.ViewModel
             if (mloginOpration == LoginHelper.LoginOpration.Login)
             {
                 //登录用户全局使用
-                UserInfo.LogedUserInfo = info;
+                var uinfo = SqlSugarHelper.mDB.Queryable<SqlSugarModel.User_Table, SqlSugarModel.Role_Table, SqlSugarModel.Role_Auth_Relationship_Table, SqlSugarModel.Authorities_Model>((ut, rt, rart, at) => new JoinQueryInfos(
+                   JoinType.Left, ut.UserRole == rt.Role_ID,
+                   JoinType.Left, rt.Role_ID == rart.Role_ID,
+                   JoinType.Left, rart.Authority_ID == at.Authorities_ID
+                   ))
+                   .Where(ut => ut.UserID == info.UserID)
+                   .GroupBy((ut, rt, rart, at) => ut.UserID)
+                   .Select((ut, rt, rart, at) => new
+                   {
+                       uid = ut.UserID,
+                       uname = ut.UserName,
+                       udepar = ut.UserDepar,
+                       ubirthday = ut.Birthday,
+                       rtrolecode = rt.Role_Code,
+                       rtrolename = rt.Role_Name,
+                       rtroleid = rt.Role_ID,
+                       atauthority = SqlFunc.MappingColumn<string>("string", "GROUP_CONCAT(DISTINCT at.Authority_Name) "),
+                   }).ToList().FirstOrDefault();
+
+                UserInfo.LogedUserInfo = new UserInfo_Model
+                {
+                    UserID = uinfo.uid,
+                    UserName = uinfo.uname,
+                    UserDepar = uinfo.udepar,
+                    Birthday = uinfo.ubirthday,
+                    UserRoleCode = uinfo.rtrolecode,
+                    UserRole = uinfo.rtrolename,
+                    UserRoleID = uinfo.rtroleid,
+                    Authorities = uinfo.atauthority == null ? new List<string>() : uinfo.atauthority.Split(',').ToList(),
+                };
+
+                AuthorizationItemDefine.Default.RiseProperty();//刷新属性
+                //传参给nlog配置文件
                 MappedDiagnosticsLogicalContext.Set("userId", info.UserID);
                 logger.Info("登录成功！");
             }

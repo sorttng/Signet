@@ -8,29 +8,39 @@
       xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
       xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
       xmlns:mvvm="http://www.galasoft.ch/mvvmlight"
+      xmlns:c="clr-namespace:FAS.Common"
+      xmlns:ui ="clr-namespace:FAS.UI"
       d:DesignHeight="450" d:DesignWidth="800"
+      xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
       Title="Log_View">
     
     <Page.DataContext>
         <Binding Path="Log" Source="{StaticResource Locator}"></Binding>
     </Page.DataContext>
-    
+
+    <Page.Resources>
+        <c:AuthConverter x:Key="auCOnverter"/>
+    </Page.Resources>
+
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="10*"></RowDefinition>
-            <RowDefinition Height="90*"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="100*"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0" Orientation="Horizontal">
             <Label VerticalAlignment="Center">操作时间</Label>
-            <mah:DateTimePicker Height="35" VerticalContentAlignment="Center"
+            <mah:DateTimePicker Name="StartTime_Dtpk" Height="35" VerticalContentAlignment="Center"
                     Culture="zh-cn" mah:TextBoxHelper.Watermark="开始时间"
-                    SelectedDateTime="{Binding mLog_Model.LogStartTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></mah:DateTimePicker>
+                    SelectedDateTime="{Binding mLog_Model.LogStartTime, Mode=TwoWay, UpdateSourceTrigger=Explicit}"></mah:DateTimePicker>
             <Label VerticalAlignment="Center">-</Label>
-            <mah:DateTimePicker Height="35" VerticalContentAlignment="Center"
+            <mah:DateTimePicker Name="EndTime_Dtpk" Height="35" VerticalContentAlignment="Center"
                     Culture="zh-cn" mah:TextBoxHelper.Watermark="结束时间"
-                    SelectedDateTime="{Binding mLog_Model.LogEndTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></mah:DateTimePicker>
-            <Button Style="{StaticResource HeadButtonStyle}" Content="搜索">
+                    SelectedDateTime="{Binding mLog_Model.LogEndTime, Mode=TwoWay, UpdateSourceTrigger=Explicit}"></mah:DateTimePicker>
+            <Button Name="Search_Btn" Style="{StaticResource HeadButtonStyle}" Content="搜索"
+                    IsEnabled="{Binding LogQuery ,Source={x:Static c:AuthorizationItemDefine.Default},Converter={StaticResource auCOnverter}}"
+                    Click="Search_Btn_Click">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Click">
                         <mvvm:EventToCommand Command="{Binding Search_Command}"/>
@@ -53,5 +63,11 @@
                 <DataGridTextColumn Header="用户" Binding="{Binding UserID}" Width="*" />
             </DataGrid.Columns>
         </DataGrid>
+
+        <!-- 分页控件 -->
+        <ui:PagerControl Grid.Row="2"
+            TotalItems="{Binding TotalItems}"
+            CurrentPage="{Binding CurrentPage, Mode=TwoWay}"
+            PageSize ="{Binding PageSize, Mode=TwoWay}"/>
     </Grid>
 </Page>

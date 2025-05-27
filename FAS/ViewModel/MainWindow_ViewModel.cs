@@ -48,7 +48,7 @@ namespace FAS.ViewModel
         //[Obsolete]
         public MainWindow_ViewModel()
         {
-            UserInfo.LogedUserInfo = new SqlSugarModel.User_Table();
+            UserInfo.LogedUserInfo = new UserInfo_Model();
 
             mMain_Model = new Main_Model()
             {
@@ -73,12 +73,13 @@ namespace FAS.ViewModel
                 NavigationDestination = new Uri("View/Home_View.xaml", UriKind.RelativeOrAbsolute)
             });
 
+
             this.Menu.Add(new MenuItem()
             {
-                Icon = new PackIconFontAwesome() { Kind = PackIconFontAwesomeKind.ListOlSolid },
-                Label = "数据查询",
-                NavigationType = typeof(DataQuery_View),
-                NavigationDestination = new Uri("View/DataQuery_View.xaml", UriKind.RelativeOrAbsolute)
+                Icon = new PackIconFontAwesome() { Kind = PackIconFontAwesomeKind.UserInjuredSolid },
+                Label = "用户管理",
+                NavigationType = typeof(UserManage_View),
+                NavigationDestination = new Uri("View/UserManage_View.xaml", UriKind.RelativeOrAbsolute)
             });
 
             this.Menu.Add(new MenuItem()
@@ -88,6 +89,8 @@ namespace FAS.ViewModel
                 NavigationType = typeof(Log_View),
                 NavigationDestination = new Uri("View/Log_View.xaml", UriKind.RelativeOrAbsolute)
             });
+
+
 
             this.OptionsMenu.Add(new MenuItem()
             {
@@ -130,8 +133,8 @@ namespace FAS.ViewModel
             //    locations.Where(a => a.LocationId == ConfigFileHelper.ConfigRead("Location_ID")).First();
             #endregion
 
-            StartModbusTcpSlave();//开启modbus服务
-            logger.Info("开启modbus服务成功！");
+            //StartModbusTcpSlave();//开启modbus服务
+            //logger.Info("开启modbus服务成功！");
             logger.Info("系统启动成功！");
 
         }

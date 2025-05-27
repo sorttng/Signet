@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace FAS.View
 {
     /// <summary>
-    /// DataQuery_View.xaml 的交互逻辑
+    /// UserManage_View.xaml 的交互逻辑
     /// </summary>
-    public partial class DataQuery_View : Page
+    public partial class UserManage_View : Page
     {
-        public DataQuery_View()
+        public UserManage_View()
         {
             InitializeComponent();
         }

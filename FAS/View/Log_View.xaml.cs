@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using MahApps.Metro.Controls;
 namespace FAS.View
 {
     /// <summary>
@@ -23,6 +23,16 @@ namespace FAS.View
         public Log_View()
         {
             InitializeComponent();
+        }
+
+
+        private void Search_Btn_Click(object sender, RoutedEventArgs e)
+        {
+            BindingExpression binding_StartTime_Dtpk = StartTime_Dtpk.GetBindingExpression(MahApps.Metro.Controls.DateTimePicker.SelectedDateTimeProperty);
+            binding_StartTime_Dtpk.UpdateSource();
+
+            BindingExpression binding_EndTime_Dtpk = EndTime_Dtpk.GetBindingExpression(MahApps.Metro.Controls.DateTimePicker.SelectedDateTimeProperty);
+            binding_StartTime_Dtpk.UpdateSource();
         }
     }
 }

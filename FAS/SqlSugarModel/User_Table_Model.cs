@@ -50,10 +50,10 @@ namespace FAS.SqlSugarModel
         /// </summary>
         public System.String Password { get { return this._Password; } set { this._Password = value; } }
 
-        private System.String _UserRole;
+        private System.Int64 _UserRole;
         /// <summary>
         /// UserRole
         /// </summary>
-        public System.String UserRole { get { return this._UserRole; } set { this._UserRole = value; } }
+        public System.Int64 UserRole { get { return this._UserRole; } set { this._UserRole = value; } }
     }
 }
