@@ -1,0 +1,171 @@
+﻿<UserControl x:Class="Signet.UI.PagerControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"  
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style x:Key="ChangePageButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="{DynamicResource MahApps.Brushes.Accent}"/>
+            <Setter Property="Foreground" Value="{DynamicResource MahApps.Brushes.IdealForeground}"/>
+            <Setter Property="BorderThickness" Value="1"></Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <mah:ClipBorder x:Name="Background" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" CornerRadius="5" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                            <mah:ClipBorder x:Name="DisabledVisualElement" Background="{DynamicResource MahApps.Brushes.Control.Disabled}" CornerRadius="{TemplateBinding mah:ControlsHelper.CornerRadius}" IsHitTestVisible="False" Opacity="0" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                            <Grid Margin="{TemplateBinding BorderThickness}">
+                                <Rectangle x:Name="MouseOverRectangle" Fill="{DynamicResource MahApps.Brushes.Button.AccentedSquare.Background.MouseOver}" Opacity="0"/>
+                                <mah:ContentControlEx x:Name="PART_ContentPresenter" ContentCharacterCasing="{Binding (mah:ControlsHelper.ContentCharacterCasing), RelativeSource={RelativeSource TemplatedParent}}" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Padding="{TemplateBinding Padding}" RecognizesAccessKey="{TemplateBinding mah:ControlsHelper.RecognizesAccessKey}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            </Grid>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="{DynamicResource MahApps.Brushes.Button.AccentedSquare.Foreground.MouseOver}"/>
+                                <Setter Property="Opacity" TargetName="MouseOverRectangle" Value="1"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="{DynamicResource MahApps.Brushes.ThemeForeground}"/>
+                                <Setter Property="Foreground" Value="{DynamicResource MahApps.Brushes.ThemeBackground}"/>
+                                <Setter Property="Opacity" TargetName="MouseOverRectangle" Value="0"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Foreground" Value="{DynamicResource MahApps.Brushes.Gray2}"/>
+                                <Setter Property="Opacity" TargetName="DisabledVisualElement" Value="0.7"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.BasedOn>
+                <Style TargetType="{x:Type ButtonBase}">
+                    <Setter Property="Background" Value="{DynamicResource MahApps.Brushes.ThemeBackground}"/>
+                    <Setter Property="BorderBrush" Value="{DynamicResource MahApps.Brushes.ThemeForeground}"/>
+                    <Setter Property="BorderThickness" Value="2"/>
+                    <Setter Property="FontFamily" Value="{DynamicResource MahApps.Fonts.Family.Button}"/>
+                    <Setter Property="FontWeight" Value="SemiBold"/>
+                    <Setter Property="Foreground" Value="{DynamicResource MahApps.Brushes.ThemeForeground}"/>
+                    <Setter Property="MinHeight" Value="25"/>
+                    <Setter Property="Padding" Value="3,4"/>
+                    <Setter Property="SnapsToDevicePixels" Value="True"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type ButtonBase}">
+                                <Grid>
+                                    <mah:ClipBorder x:Name="Background" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" CornerRadius="{TemplateBinding mah:ControlsHelper.CornerRadius}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                    <Grid Margin="{TemplateBinding BorderThickness}">
+                                        <mah:ContentControlEx x:Name="PART_ContentPresenter" ContentCharacterCasing="{Binding (mah:ControlsHelper.ContentCharacterCasing), RelativeSource={RelativeSource TemplatedParent}}" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Padding="{TemplateBinding Padding}" RecognizesAccessKey="{TemplateBinding mah:ControlsHelper.RecognizesAccessKey}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                    </Grid>
+                                    <mah:ClipBorder x:Name="DisabledVisualElement" Background="{DynamicResource MahApps.Brushes.Control.Disabled}" CornerRadius="{TemplateBinding mah:ControlsHelper.CornerRadius}" IsHitTestVisible="False" Opacity="0" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="{DynamicResource MahApps.Brushes.Button.Square.Background.MouseOver}"/>
+                                        <Setter Property="Foreground" Value="{DynamicResource MahApps.Brushes.Button.Square.Foreground.MouseOver}"/>
+                                    </Trigger>
+                                    <Trigger Property="IsPressed" Value="True">
+                                        <Setter Property="Background" Value="{DynamicResource MahApps.Brushes.ThemeForeground}"/>
+                                        <Setter Property="Foreground" Value="{DynamicResource MahApps.Brushes.ThemeBackground}"/>
+                                    </Trigger>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter Property="Opacity" TargetName="DisabledVisualElement" Value="0.7"/>
+                                        <Setter Property="Opacity" TargetName="PART_ContentPresenter" Value="0.3"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="mah:ControlsHelper.ContentCharacterCasing" Value="{DynamicResource MahApps.CharacterCasing.Button.Square}"/>
+                </Style>
+            </Style.BasedOn>
+        </Style>
+
+        <Style x:Key="PageButtonStyle" BasedOn="{StaticResource ChangePageButtonStyle}" TargetType="Button">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsCurrent}" Value="True">
+                    <Setter Property="FontWeight" Value="Bold"></Setter>
+                    <Setter Property="FontSize"  Value="16"></Setter>
+                    <Setter Property="Foreground" Value="Black"></Setter>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Number}" Value="-1">
+                    <Setter Property="IsEnabled" Value="False"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+
+    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+
+        <TextBlock Text="共:" VerticalAlignment="Center" Margin="5"/>
+        <TextBlock Text="{Binding TotalItems, RelativeSource={RelativeSource AncestorType=UserControl}}" 
+                   VerticalAlignment="Center" Margin="5" />
+        <TextBlock Text="条" VerticalAlignment="Center" Margin="5,5,20,5"/>
+
+        <TextBlock Text="每页" VerticalAlignment="Center" Margin="5"/>
+        <ComboBox x:Name="cmbPageSize" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                  IsEnabled="{Binding HasData, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                  SelectedValue="{Binding PageSize, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                  SelectionChanged="CmbPageSize_SelectionChanged"
+                  Width="80" Margin="5" Style="{DynamicResource MahApps.Styles.ComboBox}" mah:ControlsHelper.CornerRadius="5">
+            <sys:Int32>50</sys:Int32>
+            <sys:Int32>100</sys:Int32>
+            <sys:Int32>150</sys:Int32>
+            <sys:Int32>300</sys:Int32>
+        </ComboBox>
+        <TextBlock Text="条" VerticalAlignment="Center" Margin="5,5,20,5"/>
+
+
+        <Button Margin="5" Click="FirstPage_Click" Style="{DynamicResource ChangePageButtonStyle}"
+                IsEnabled="{Binding CanPrevious, RelativeSource={RelativeSource AncestorType=UserControl}}">
+            <iconPacks:PackIconMaterialDesign Kind="FirstPage" Margin="5"/>
+        </Button>
+        <Button Margin="5" Click="PreviousPage_Click" Style="{DynamicResource ChangePageButtonStyle}"
+                IsEnabled="{Binding CanPrevious, RelativeSource={RelativeSource AncestorType=UserControl}}">
+            <iconPacks:PackIconMaterialDesign Kind="KeyboardArrowLeft" Margin="5"/>
+        </Button>
+
+        <ItemsControl x:Name="pageItems" ItemsSource="{Binding PageNumbers, RelativeSource={RelativeSource AncestorType=UserControl}}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Button Content="{Binding Display}" 
+                            CommandParameter="{Binding Number}"
+                            Margin="5" Width="30"
+                            Click="PageButton_Click"
+                            Style="{StaticResource PageButtonStyle}"/>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+        <Button Margin="5" Click="NextPage_Click" Style="{StaticResource ChangePageButtonStyle}"
+                IsEnabled="{Binding CanNext, RelativeSource={RelativeSource AncestorType=UserControl}}">
+            <iconPacks:PackIconMaterialDesign Kind="KeyboardArrowRight" Margin="5"/>
+        </Button>
+        <Button Margin="5,5,20,5" Click="LastPage_Click" Style="{StaticResource ChangePageButtonStyle}"
+                IsEnabled="{Binding CanNext, RelativeSource={RelativeSource AncestorType=UserControl}}">
+            <iconPacks:PackIconMaterialDesign Kind="LastPage" Margin="5"/>
+        </Button>
+
+        <TextBlock Text="跳转到" VerticalAlignment="Center" Margin="5"/>
+        <TextBox Text="{Binding CurrentPage, RelativeSource={RelativeSource AncestorType=UserControl}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                 IsEnabled="{Binding HasData, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                 VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                 Width="50" Margin="5" Style="{DynamicResource MahApps.Styles.TextBox}" mah:ControlsHelper.CornerRadius="5"/>
+
+        <TextBlock Text="/" VerticalAlignment="Center"/>
+        <TextBlock Text="{Binding TotalPages, RelativeSource={RelativeSource AncestorType=UserControl}}" 
+                   VerticalAlignment="Center" Margin="5"/>
+        <TextBlock Text="页" VerticalAlignment="Center" Margin="5"/>
+
+
+    </StackPanel>
+</UserControl>

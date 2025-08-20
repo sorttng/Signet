@@ -1,0 +1,73 @@
+﻿<Page x:Class="Signet.View.Users_View"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+      xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+      xmlns:local="clr-namespace:Signet.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Users_View">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20*"></RowDefinition>
+            <RowDefinition Height="80*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <!-- 第一列占据剩余空间 -->
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0" Orientation="Horizontal">
+                <Button Style="{StaticResource HeadButtonStyle}" Content="新 增"></Button>
+                
+                <Button Style="{StaticResource HeadButtonStyle}" Content="删 除" Background="OrangeRed"></Button>
+
+                <TextBox Width="200" Height=" 35" Margin="50,5,5,5"></TextBox>
+                <Button Style="{StaticResource HeadButtonStyle}" Content="查 询"></Button>
+            </StackPanel>
+
+            <Button Grid.Column="1" Style="{StaticResource HeadButtonStyle}" Content="修改密码" HorizontalAlignment="Right"></Button>
+        </Grid>
+
+
+        <DataGrid Grid.Row="1" 
+                ItemsSource="{Binding Path=ItemsSource, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,ElementName=dataPager}" 
+                AutoGenerateColumns="False" CanUserAddRows="False" VerticalScrollBarVisibility="Auto"                                      
+                CanUserSortColumns="False" IsReadOnly ="True"
+                ScrollViewer.VerticalScrollBarVisibility="Visible"
+                ScrollViewer.HorizontalScrollBarVisibility="Visible">
+            <DataGridTextColumn Header="序号" Binding="{Binding SerialNumber}" Width="auto" />
+            <DataGridTextColumn Header="用户名" Binding="{Binding SerialNumber}" Width="auto" />
+            <DataGridTextColumn Header="部门" Binding="{Binding SerialNumber}" Width="auto" />
+            <DataGridTextColumn Header="出生日期" Binding="{Binding SerialNumber}" Width="auto" />
+            <DataGridTextColumn Header="权限" Binding="{Binding SerialNumber}" Width="auto" />
+            <DataGridTemplateColumn Header="编辑" Width="*">
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Button>
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <i:InvokeCommandAction Command="{Binding DataContext.Updata_Command, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGrid}}"
+                                                                           CommandParameter="{Binding User_Id}" />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <Label>编辑</Label>
+                                    <iconPacks:PackIconBoxIcons VerticalAlignment="Center"  Kind="RegularEditAlt" />
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
+
+        </DataGrid>
+    </Grid>
+</Page>

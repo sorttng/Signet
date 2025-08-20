@@ -1,0 +1,1061 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0EBE136A-007E-45F1-9540-351A3AE8AF39}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Signet</RootNamespace>
+    <AssemblyName>Signet</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>
+    </ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.9.0.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
+      <HintPath>..\packages\Portable.BouncyCastle.1.9.0\lib\net40\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging, Version=3.4.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Common.Logging.3.4.1\lib\net40\Common.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging.Core, Version=3.4.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Common.Logging.Core.3.4.1\lib\net40\Common.Logging.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="CommonServiceLocator, Version=2.0.7.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.2.0.7\lib\net47\CommonServiceLocator.dll</HintPath>
+    </Reference>
+    <Reference Include="ControlzEx, Version=7.0.0.0, Culture=neutral, PublicKeyToken=69f1c32f803d307e, processorArchitecture=MSIL">
+      <HintPath>..\packages\ControlzEx.7.0.0\lib\net462\ControlzEx.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetKit.Wpf.AutoCompleteComboBox, Version=1.6.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetKit.Wpf.AutoCompleteComboBox.1.6.0\lib\net462\DotNetKit.Wpf.AutoCompleteComboBox.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight, Version=5.4.1.0, Culture=neutral, PublicKeyToken=e7570ab207bcb616, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Extras, Version=5.4.1.0, Culture=neutral, PublicKeyToken=669f0b5e8f868abf, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.Extras.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Platform, Version=5.4.1.0, Culture=neutral, PublicKeyToken=5f873c45e98af8a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=1.4.2.13, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpZipLib.1.4.2\lib\netstandard2.0\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="IronPython, Version=3.4.2.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\IronPython.3.4.2\lib\net462\IronPython.dll</HintPath>
+    </Reference>
+    <Reference Include="IronPython.Modules, Version=3.4.2.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\IronPython.3.4.2\lib\net462\IronPython.Modules.dll</HintPath>
+    </Reference>
+    <Reference Include="IronPython.SQLite, Version=3.4.2.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\IronPython.3.4.2\lib\net462\IronPython.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="IronPython.Wpf, Version=3.4.2.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\IronPython.3.4.2\lib\net462\IronPython.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro, Version=3.0.0.0, Culture=neutral, PublicKeyToken=51482d6f650b2b3f, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.3.0.0-alpha0513\lib\net462\MahApps.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro.IconPacks, Version=5.0.0.0, Culture=neutral, PublicKeyToken=0c0d510f9915137a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.IconPacks.5.1.0\lib\net47\MahApps.Metro.IconPacks.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro.IconPacks.BootstrapIcons, Version=5.0.0.0, Culture=neutral, PublicKeyToken=0c0d510f9915137a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.IconPacks.BootstrapIcons.5.1.0\lib\net47\MahApps.Metro.IconPacks.BootstrapIcons.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro.IconPacks.BoxIcons, Version=5.0.0.0, Culture=neutral, PublicKeyToken=0c0d510f9915137a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.IconPacks.BoxIcons.5.1.0\lib\net47\MahApps.Metro.IconPacks.BoxIcons.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro.IconPacks.CircumIcons, Version=5.0.0.0, Culture=neutral, PublicKeyToken=0c0d510f9915137a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.IconPacks.CircumIcons.5.1.0\lib\net47\MahApps.Metro.IconPacks.CircumIcons.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro.IconPacks.Codicons, Version=5.0.0.0, Culture=neutral, PublicKeyToken=0c0d510f9915137a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.IconPacks.Codicons.5.1.0\lib\net47\MahApps.Metro.IconPacks.Codicons.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro.IconPacks.Coolicons, Version=5.0.0.0, Culture=neutral, PublicKeyToken=0c0d510f9915137a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.IconPacks.Coolicons.5.1.0\lib\net47\MahApps.Metro.IconPacks.Coolicons.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro.IconPacks.Core, Version=5.0.0.0, Culture=neutral, PublicKeyToken=0c0d510f9915137a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.IconPacks.Core.5.1.0\lib\net47\MahApps.Metro.IconPacks.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro.IconPacks.Entypo, Version=5.0.0.0, Culture=neutral, PublicKeyToken=0c0d510f9915137a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.IconPacks.Entypo.5.1.0\lib\net47\MahApps.Metro.IconPacks.Entypo.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro.IconPacks.EvaIcons, Version=5.0.0.0, Culture=neutral, PublicKeyToken=0c0d510f9915137a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.IconPacks.EvaIcons.5.1.0\lib\net47\MahApps.Metro.IconPacks.EvaIcons.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro.IconPacks.FeatherIcons, Version=5.0.0.0, Culture=neutral, PublicKeyToken=0c0d510f9915137a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.IconPacks.FeatherIcons.5.1.0\lib\net47\MahApps.Metro.IconPacks.FeatherIcons.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro.IconPacks.FileIcons, Version=5.0.0.0, Culture=neutral, PublicKeyToken=0c0d510f9915137a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.IconPacks.FileIcons.5.1.0\lib\net47\MahApps.Metro.IconPacks.FileIcons.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro.IconPacks.Fontaudio, Version=5.0.0.0, Culture=neutral, PublicKeyToken=0c0d510f9915137a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.IconPacks.Fontaudio.5.1.0\lib\net47\MahApps.Metro.IconPacks.Fontaudio.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro.IconPacks.FontAwesome, Version=5.0.0.0, Culture=neutral, PublicKeyToken=0c0d510f9915137a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.IconPacks.FontAwesome.5.1.0\lib\net47\MahApps.Metro.IconPacks.FontAwesome.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro.IconPacks.Fontisto, Version=5.0.0.0, Culture=neutral, PublicKeyToken=0c0d510f9915137a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.IconPacks.Fontisto.5.1.0\lib\net47\MahApps.Metro.IconPacks.Fontisto.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro.IconPacks.ForkAwesome, Version=5.0.0.0, Culture=neutral, PublicKeyToken=0c0d510f9915137a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.IconPacks.ForkAwesome.5.1.0\lib\net47\MahApps.Metro.IconPacks.ForkAwesome.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro.IconPacks.GameIcons, Version=5.0.0.0, Culture=neutral, PublicKeyToken=0c0d510f9915137a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.IconPacks.GameIcons.5.1.0\lib\net47\MahApps.Metro.IconPacks.GameIcons.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro.IconPacks.Ionicons, Version=5.0.0.0, Culture=neutral, PublicKeyToken=0c0d510f9915137a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.IconPacks.Ionicons.5.1.0\lib\net47\MahApps.Metro.IconPacks.Ionicons.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro.IconPacks.JamIcons, Version=5.0.0.0, Culture=neutral, PublicKeyToken=0c0d510f9915137a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.IconPacks.JamIcons.5.1.0\lib\net47\MahApps.Metro.IconPacks.JamIcons.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro.IconPacks.Lucide, Version=5.0.0.0, Culture=neutral, PublicKeyToken=0c0d510f9915137a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.IconPacks.Lucide.5.1.0\lib\net47\MahApps.Metro.IconPacks.Lucide.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro.IconPacks.Material, Version=5.0.0.0, Culture=neutral, PublicKeyToken=0c0d510f9915137a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.IconPacks.Material.5.1.0\lib\net47\MahApps.Metro.IconPacks.Material.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro.IconPacks.MaterialDesign, Version=5.0.0.0, Culture=neutral, PublicKeyToken=0c0d510f9915137a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.IconPacks.MaterialDesign.5.1.0\lib\net47\MahApps.Metro.IconPacks.MaterialDesign.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro.IconPacks.MaterialLight, Version=5.0.0.0, Culture=neutral, PublicKeyToken=0c0d510f9915137a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.IconPacks.MaterialLight.5.1.0\lib\net47\MahApps.Metro.IconPacks.MaterialLight.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro.IconPacks.MemoryIcons, Version=5.0.0.0, Culture=neutral, PublicKeyToken=0c0d510f9915137a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.IconPacks.MemoryIcons.5.1.0\lib\net47\MahApps.Metro.IconPacks.MemoryIcons.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro.IconPacks.Microns, Version=5.0.0.0, Culture=neutral, PublicKeyToken=0c0d510f9915137a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.IconPacks.Microns.5.1.0\lib\net47\MahApps.Metro.IconPacks.Microns.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro.IconPacks.Modern, Version=5.0.0.0, Culture=neutral, PublicKeyToken=0c0d510f9915137a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.IconPacks.Modern.5.1.0\lib\net47\MahApps.Metro.IconPacks.Modern.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro.IconPacks.Octicons, Version=5.0.0.0, Culture=neutral, PublicKeyToken=0c0d510f9915137a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.IconPacks.Octicons.5.1.0\lib\net47\MahApps.Metro.IconPacks.Octicons.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro.IconPacks.PhosphorIcons, Version=5.0.0.0, Culture=neutral, PublicKeyToken=0c0d510f9915137a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.IconPacks.PhosphorIcons.5.1.0\lib\net47\MahApps.Metro.IconPacks.PhosphorIcons.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro.IconPacks.PicolIcons, Version=5.0.0.0, Culture=neutral, PublicKeyToken=0c0d510f9915137a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.IconPacks.PicolIcons.5.1.0\lib\net47\MahApps.Metro.IconPacks.PicolIcons.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro.IconPacks.PixelartIcons, Version=5.0.0.0, Culture=neutral, PublicKeyToken=0c0d510f9915137a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.IconPacks.PixelartIcons.5.1.0\lib\net47\MahApps.Metro.IconPacks.PixelartIcons.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro.IconPacks.RadixIcons, Version=5.0.0.0, Culture=neutral, PublicKeyToken=0c0d510f9915137a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.IconPacks.RadixIcons.5.1.0\lib\net47\MahApps.Metro.IconPacks.RadixIcons.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro.IconPacks.RemixIcon, Version=5.0.0.0, Culture=neutral, PublicKeyToken=0c0d510f9915137a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.IconPacks.RemixIcon.5.1.0\lib\net47\MahApps.Metro.IconPacks.RemixIcon.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro.IconPacks.RPGAwesome, Version=5.0.0.0, Culture=neutral, PublicKeyToken=0c0d510f9915137a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.IconPacks.RPGAwesome.5.1.0\lib\net47\MahApps.Metro.IconPacks.RPGAwesome.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro.IconPacks.SimpleIcons, Version=5.0.0.0, Culture=neutral, PublicKeyToken=0c0d510f9915137a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.IconPacks.SimpleIcons.5.1.0\lib\net47\MahApps.Metro.IconPacks.SimpleIcons.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro.IconPacks.Typicons, Version=5.0.0.0, Culture=neutral, PublicKeyToken=0c0d510f9915137a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.IconPacks.Typicons.5.1.0\lib\net47\MahApps.Metro.IconPacks.Typicons.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro.IconPacks.Unicons, Version=5.0.0.0, Culture=neutral, PublicKeyToken=0c0d510f9915137a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.IconPacks.Unicons.5.1.0\lib\net47\MahApps.Metro.IconPacks.Unicons.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro.IconPacks.VaadinIcons, Version=5.0.0.0, Culture=neutral, PublicKeyToken=0c0d510f9915137a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.IconPacks.VaadinIcons.5.1.0\lib\net47\MahApps.Metro.IconPacks.VaadinIcons.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro.IconPacks.WeatherIcons, Version=5.0.0.0, Culture=neutral, PublicKeyToken=0c0d510f9915137a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.IconPacks.WeatherIcons.5.1.0\lib\net47\MahApps.Metro.IconPacks.WeatherIcons.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro.IconPacks.Zondicons, Version=5.0.0.0, Culture=neutral, PublicKeyToken=0c0d510f9915137a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.IconPacks.Zondicons.5.1.0\lib\net47\MahApps.Metro.IconPacks.Zondicons.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=10.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.10.0.0-preview.1.25080.5\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamic, Version=1.3.5.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\DynamicLanguageRuntime.1.3.5\lib\net462\Microsoft.Dynamic.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration, Version=10.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.10.0.0-preview.1.25080.5\lib\net462\Microsoft.Extensions.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Abstractions, Version=10.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.Abstractions.10.0.0-preview.1.25080.5\lib\net462\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Binder, Version=10.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.Binder.10.0.0-preview.1.25080.5\lib\net462\Microsoft.Extensions.Configuration.Binder.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection, Version=10.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.10.0.0-preview.1.25080.5\lib\net462\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=10.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.10.0.0-preview.1.25080.5\lib\net462\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging, Version=10.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.10.0.0-preview.1.25080.5\lib\net462\Microsoft.Extensions.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=10.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.10.0.0-preview.1.25080.5\lib\net462\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Options, Version=10.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Options.10.0.0-preview.1.25080.5\lib\net462\Microsoft.Extensions.Options.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Primitives, Version=10.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Primitives.10.0.0-preview.1.25080.5\lib\net462\Microsoft.Extensions.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=59d6d24383174ac4, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocation.1.0.0\lib\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Scripting, Version=1.3.5.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\DynamicLanguageRuntime.1.3.5\lib\net462\Microsoft.Scripting.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Scripting.Metadata, Version=1.3.5.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\DynamicLanguageRuntime.1.3.5\lib\net462\Microsoft.Scripting.Metadata.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.135\lib\net462\Microsoft.Xaml.Behaviors.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.5.4.0\lib\net46\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog.Database, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.Database.5.4.0\lib\net46\NLog.Database.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog.Extensions.Logging, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.Extensions.Logging.5.4.0\lib\net461\NLog.Extensions.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="NModbus, Version=3.0.81.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NModbus.3.0.81\lib\net46\NModbus.dll</HintPath>
+    </Reference>
+    <Reference Include="NModbus.Serial, Version=3.0.81.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NModbus.Serial.3.0.81\lib\net46\NModbus.Serial.dll</HintPath>
+    </Reference>
+    <Reference Include="NModbus4, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NModbus4.3.0.0-alpha2\lib\net45\NModbus4.dll</HintPath>
+    </Reference>
+    <Reference Include="NModbus4.Serial, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NModbus4.Serial.1.0.0-alpha1\lib\net45\NModbus4.Serial.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceLocation, Version=1.3.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ServiceLocation.1.3.1\lib\net45\ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpVectors.Converters.Wpf, Version=1.8.4.2, Culture=neutral, PublicKeyToken=b532964b8548be77, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpVectors.1.8.4.2\lib\net47\SharpVectors.Converters.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpVectors.Core, Version=1.8.4.2, Culture=neutral, PublicKeyToken=7407205e337c98ef, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpVectors.1.8.4.2\lib\net47\SharpVectors.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpVectors.Css, Version=1.8.4.2, Culture=neutral, PublicKeyToken=7a46e3f532fdb787, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpVectors.1.8.4.2\lib\net47\SharpVectors.Css.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpVectors.Dom, Version=1.8.4.2, Culture=neutral, PublicKeyToken=517340b6277b1a7a, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpVectors.1.8.4.2\lib\net47\SharpVectors.Dom.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpVectors.Model, Version=1.8.4.2, Culture=neutral, PublicKeyToken=2236cfc76b505845, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpVectors.1.8.4.2\lib\net47\SharpVectors.Model.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpVectors.Rendering.Gdi, Version=1.8.4.2, Culture=neutral, PublicKeyToken=03902092284347e3, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpVectors.1.8.4.2\lib\net47\SharpVectors.Rendering.Gdi.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpVectors.Rendering.Wpf, Version=1.8.4.2, Culture=neutral, PublicKeyToken=d0902381100df30e, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpVectors.1.8.4.2\lib\net47\SharpVectors.Rendering.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpVectors.Runtime.Wpf, Version=1.8.4.2, Culture=neutral, PublicKeyToken=d16e717f0a981fb9, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpVectors.1.8.4.2\lib\net47\SharpVectors.Runtime.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="SqlSugar, Version=5.1.4.180, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SqlSugar.5.1.4.180\lib\SqlSugar.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.4.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.6.0\lib\net462\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.SQLite, Version=1.0.119.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.119.0\lib\net46\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.EF6, Version=1.0.119.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.EF6.1.0.119.0\lib\net46\System.Data.SQLite.EF6.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.Linq, Version=1.0.119.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Linq.1.0.119.0\lib\net46\System.Data.SQLite.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=10.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.10.0.0-preview.1.25080.5\lib\net462\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Globalization" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Memory, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.6.0\lib\net462\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.6.0\lib\net462\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.1.0\lib\net462\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.6.0\lib\net462\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="TitaniumAS.Opc.Client, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\TitaniumAS.Opc.Client.1.0.2.0\lib\net40\TitaniumAS.Opc.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WPFLocalizeExtension, Version=3.10.0.0, Culture=neutral, PublicKeyToken=c726e0262981a1eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\WPFLocalizeExtension.3.10.0\lib\net452\WPFLocalizeExtension.dll</HintPath>
+    </Reference>
+    <Reference Include="XAMLMarkupExtensions, Version=2.1.3.0, Culture=neutral, PublicKeyToken=c726e0262981a1eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\XAMLMarkupExtensions.2.1.3\lib\net472\XAMLMarkupExtensions.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Common\AuthorizationItemDefine.cs" />
+    <Compile Include="Common\ComputerInfoHelper.cs" />
+    <Compile Include="Common\ConfigFileHelper.cs" />
+    <Compile Include="Common\CsvHelper.cs" />
+    <Compile Include="Common\DateHelper.cs" />
+    <Compile Include="Common\DesHelper.cs" />
+    <Compile Include="Common\FtpHelper.cs" />
+    <Compile Include="Common\GlobalInfo.cs" />
+    <Compile Include="Common\JasonSerialization.cs" />
+    <Compile Include="Common\LoginHelper.cs" />
+    <Compile Include="Common\MD5Helper.cs" />
+    <Compile Include="Common\MyConverter.cs" />
+    <Compile Include="Common\PasswordBoxHelper.cs" />
+    <Compile Include="Common\EncDecKeyHelper.cs" />
+    <Compile Include="Common\RegisterHelper.cs" />
+    <Compile Include="Common\RsaHelper.cs" />
+    <Compile Include="Common\SimpleCommand.cs" />
+    <Compile Include="Common\SoftwareInfoHelper.cs" />
+    <Compile Include="Common\SqlSugarHelper.cs" />
+    <Compile Include="Common\UserInfoHelper.cs" />
+    <Compile Include="Common\WeatherHelper.cs" />
+    <Compile Include="Common\WindowBehavior.cs" />
+    <Compile Include="Common\WindowManager.cs" />
+    <Compile Include="Converter\ThemeConverter.cs" />
+    <Compile Include="Model\About_Model.cs" />
+    <Compile Include="Model\Home_Model.cs" />
+    <Compile Include="Model\Login_Window_Model.cs" />
+    <Compile Include="Model\Log_Model.cs" />
+    <Compile Include="Model\Main_Model.cs" />
+    <Compile Include="Model\Setting_Model.cs" />
+    <Compile Include="Model\Theme_Model.cs" />
+    <Compile Include="Mvvm\BindableBase.cs" />
+    <Compile Include="Mvvm\DelegateCommand.cs" />
+    <Compile Include="Navigation\FrameAnimator.cs" />
+    <Compile Include="Navigation\NavigationServiceEx.cs" />
+    <Compile Include="SqlSugarModel\Authorities_Table_Model.cs" />
+    <Compile Include="SqlSugarModel\Location_Table_Model.cs" />
+    <Compile Include="SqlSugarModel\Nlog_Model.cs" />
+    <Compile Include="SqlSugarModel\Role_Auth_Relationship_Table_Model.cs" />
+    <Compile Include="SqlSugarModel\Role_Table_Model.cs" />
+    <Compile Include="SqlSugarModel\User_Table_Model.cs" />
+    <Compile Include="UI\PagerControl.xaml.cs">
+      <DependentUpon>PagerControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\TimeControl.xaml.cs">
+      <DependentUpon>TimeControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\WearherControl.xaml.cs">
+      <DependentUpon>WearherControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\About_ViewModel.cs" />
+    <Compile Include="ViewModel\Home_ViewModel.cs" />
+    <Compile Include="ViewModel\Login_Window_ViewModel.cs" />
+    <Compile Include="ViewModel\Log_ViewModel.cs" />
+    <Compile Include="ViewModel\MenuItem.cs" />
+    <Compile Include="ViewModel\MainWindow_ViewModel.cs" />
+    <Compile Include="ViewModel\Setting_ViewModel.cs" />
+    <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Compile Include="View\About_View.xaml.cs">
+      <DependentUpon>About_View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Home_View.xaml.cs">
+      <DependentUpon>Home_View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Login_Window.xaml.cs">
+      <DependentUpon>Login_Window.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Log_View.xaml.cs">
+      <DependentUpon>Log_View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Setting_View.xaml.cs">
+      <DependentUpon>Setting_View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\RegisterKey_View.xaml.cs">
+      <DependentUpon>RegisterKey_View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserManage_View.xaml.cs">
+      <DependentUpon>UserManage_View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Users_View.xaml.cs">
+      <DependentUpon>Users_View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WeatherApiModel\Weather_Model.cs" />
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="MyStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\PagerControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\TimeControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\WearherControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\About_View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Home_View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Login_Window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Log_View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Setting_View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\RegisterKey_View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserManage_View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Users_View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Resource Include="Images\Login.jpg" />
+    <Resource Include="Images\Logo.ico" />
+    <Resource Include="Images\Logo.png" />
+    <Resource Include="Images\100-fill.svg" />
+    <Resource Include="Images\100.svg" />
+    <Resource Include="Images\1001.svg" />
+    <Resource Include="Images\1002.svg" />
+    <Resource Include="Images\1003.svg" />
+    <Resource Include="Images\1004.svg" />
+    <Resource Include="Images\1005.svg" />
+    <Resource Include="Images\1006.svg" />
+    <Resource Include="Images\1007.svg" />
+    <Resource Include="Images\1008.svg" />
+    <Resource Include="Images\1009.svg" />
+    <Resource Include="Images\101-fill.svg" />
+    <Resource Include="Images\101.svg" />
+    <Resource Include="Images\1010.svg" />
+    <Resource Include="Images\1011.svg" />
+    <Resource Include="Images\1012.svg" />
+    <Resource Include="Images\1013.svg" />
+    <Resource Include="Images\1014.svg" />
+    <Resource Include="Images\1015.svg" />
+    <Resource Include="Images\1016.svg" />
+    <Resource Include="Images\1017.svg" />
+    <Resource Include="Images\1018.svg" />
+    <Resource Include="Images\1019.svg" />
+    <Resource Include="Images\102-fill.svg" />
+    <Resource Include="Images\102.svg" />
+    <Resource Include="Images\1020.svg" />
+    <Resource Include="Images\1021.svg" />
+    <Resource Include="Images\1022.svg" />
+    <Resource Include="Images\1023.svg" />
+    <Resource Include="Images\1024.svg" />
+    <Resource Include="Images\1025.svg" />
+    <Resource Include="Images\1026.svg" />
+    <Resource Include="Images\1027.svg" />
+    <Resource Include="Images\1028.svg" />
+    <Resource Include="Images\1029.svg" />
+    <Resource Include="Images\103-fill.svg" />
+    <Resource Include="Images\103.svg" />
+    <Resource Include="Images\1030.svg" />
+    <Resource Include="Images\1031.svg" />
+    <Resource Include="Images\1032.svg" />
+    <Resource Include="Images\1033.svg" />
+    <Resource Include="Images\1034.svg" />
+    <Resource Include="Images\1035.svg" />
+    <Resource Include="Images\1036.svg" />
+    <Resource Include="Images\1037.svg" />
+    <Resource Include="Images\1038.svg" />
+    <Resource Include="Images\1039.svg" />
+    <Resource Include="Images\104-fill.svg" />
+    <Resource Include="Images\104.svg" />
+    <Resource Include="Images\1040.svg" />
+    <Resource Include="Images\1041.svg" />
+    <Resource Include="Images\1042.svg" />
+    <Resource Include="Images\1043.svg" />
+    <Resource Include="Images\1044.svg" />
+    <Resource Include="Images\1045.svg" />
+    <Resource Include="Images\1046.svg" />
+    <Resource Include="Images\1047.svg" />
+    <Resource Include="Images\1048.svg" />
+    <Resource Include="Images\1049.svg" />
+    <Resource Include="Images\1050.svg" />
+    <Resource Include="Images\1051.svg" />
+    <Resource Include="Images\1052.svg" />
+    <Resource Include="Images\1053.svg" />
+    <Resource Include="Images\1054.svg" />
+    <Resource Include="Images\1055.svg" />
+    <Resource Include="Images\1056.svg" />
+    <Resource Include="Images\1057.svg" />
+    <Resource Include="Images\1058.svg" />
+    <Resource Include="Images\1059.svg" />
+    <Resource Include="Images\1060.svg" />
+    <Resource Include="Images\1061.svg" />
+    <Resource Include="Images\1062.svg" />
+    <Resource Include="Images\1063.svg" />
+    <Resource Include="Images\1064.svg" />
+    <Resource Include="Images\1065.svg" />
+    <Resource Include="Images\1066.svg" />
+    <Resource Include="Images\1067.svg" />
+    <Resource Include="Images\1068.svg" />
+    <Resource Include="Images\1069.svg" />
+    <Resource Include="Images\1071.svg" />
+    <Resource Include="Images\1072.svg" />
+    <Resource Include="Images\1073.svg" />
+    <Resource Include="Images\1074.svg" />
+    <Resource Include="Images\1075.svg" />
+    <Resource Include="Images\1076.svg" />
+    <Resource Include="Images\1077.svg" />
+    <Resource Include="Images\1078.svg" />
+    <Resource Include="Images\1079.svg" />
+    <Resource Include="Images\1080.svg" />
+    <Resource Include="Images\1081.svg" />
+    <Resource Include="Images\1082.svg" />
+    <Resource Include="Images\1084.svg" />
+    <Resource Include="Images\1085.svg" />
+    <Resource Include="Images\1086.svg" />
+    <Resource Include="Images\1087.svg" />
+    <Resource Include="Images\1088.svg" />
+    <Resource Include="Images\1089.svg" />
+    <Resource Include="Images\1201.svg" />
+    <Resource Include="Images\1202.svg" />
+    <Resource Include="Images\1203.svg" />
+    <Resource Include="Images\1204.svg" />
+    <Resource Include="Images\1205.svg" />
+    <Resource Include="Images\1206.svg" />
+    <Resource Include="Images\1207.svg" />
+    <Resource Include="Images\1208.svg" />
+    <Resource Include="Images\1209.svg" />
+    <Resource Include="Images\1210.svg" />
+    <Resource Include="Images\1211.svg" />
+    <Resource Include="Images\1212.svg" />
+    <Resource Include="Images\1213.svg" />
+    <Resource Include="Images\1214.svg" />
+    <Resource Include="Images\1215.svg" />
+    <Resource Include="Images\1216.svg" />
+    <Resource Include="Images\1217.svg" />
+    <Resource Include="Images\1218.svg" />
+    <Resource Include="Images\1219.svg" />
+    <Resource Include="Images\1221.svg" />
+    <Resource Include="Images\1241.svg" />
+    <Resource Include="Images\1242.svg" />
+    <Resource Include="Images\1243.svg" />
+    <Resource Include="Images\1244.svg" />
+    <Resource Include="Images\1245.svg" />
+    <Resource Include="Images\1246.svg" />
+    <Resource Include="Images\1247.svg" />
+    <Resource Include="Images\1248.svg" />
+    <Resource Include="Images\1249.svg" />
+    <Resource Include="Images\1250.svg" />
+    <Resource Include="Images\1251.svg" />
+    <Resource Include="Images\1271.svg" />
+    <Resource Include="Images\1272.svg" />
+    <Resource Include="Images\1273.svg" />
+    <Resource Include="Images\1274.svg" />
+    <Resource Include="Images\150-fill.svg" />
+    <Resource Include="Images\150.svg" />
+    <Resource Include="Images\151-fill.svg" />
+    <Resource Include="Images\151.svg" />
+    <Resource Include="Images\152-fill.svg" />
+    <Resource Include="Images\152.svg" />
+    <Resource Include="Images\153-fill.svg" />
+    <Resource Include="Images\153.svg" />
+    <Resource Include="Images\1601.svg" />
+    <Resource Include="Images\1602.svg" />
+    <Resource Include="Images\1603.svg" />
+    <Resource Include="Images\1604.svg" />
+    <Resource Include="Images\1605.svg" />
+    <Resource Include="Images\1606.svg" />
+    <Resource Include="Images\1607.svg" />
+    <Resource Include="Images\1608.svg" />
+    <Resource Include="Images\1609.svg" />
+    <Resource Include="Images\1610.svg" />
+    <Resource Include="Images\1701.svg" />
+    <Resource Include="Images\1702.svg" />
+    <Resource Include="Images\1703.svg" />
+    <Resource Include="Images\1801.svg" />
+    <Resource Include="Images\1802.svg" />
+    <Resource Include="Images\1803.svg" />
+    <Resource Include="Images\1804.svg" />
+    <Resource Include="Images\1805.svg" />
+    <Resource Include="Images\2001.svg" />
+    <Resource Include="Images\2002.svg" />
+    <Resource Include="Images\2003.svg" />
+    <Resource Include="Images\2004.svg" />
+    <Resource Include="Images\2005.svg" />
+    <Resource Include="Images\2006.svg" />
+    <Resource Include="Images\2007.svg" />
+    <Resource Include="Images\2029.svg" />
+    <Resource Include="Images\2030.svg" />
+    <Resource Include="Images\2031.svg" />
+    <Resource Include="Images\2032.svg" />
+    <Resource Include="Images\2033.svg" />
+    <Resource Include="Images\2050.svg" />
+    <Resource Include="Images\2051.svg" />
+    <Resource Include="Images\2052.svg" />
+    <Resource Include="Images\2053.svg" />
+    <Resource Include="Images\2054.svg" />
+    <Resource Include="Images\2070.svg" />
+    <Resource Include="Images\2071.svg" />
+    <Resource Include="Images\2072.svg" />
+    <Resource Include="Images\2073.svg" />
+    <Resource Include="Images\2074.svg" />
+    <Resource Include="Images\2075.svg" />
+    <Resource Include="Images\2076.svg" />
+    <Resource Include="Images\2077.svg" />
+    <Resource Include="Images\2078.svg" />
+    <Resource Include="Images\2079.svg" />
+    <Resource Include="Images\2080.svg" />
+    <Resource Include="Images\2081.svg" />
+    <Resource Include="Images\2082.svg" />
+    <Resource Include="Images\2083.svg" />
+    <Resource Include="Images\2084.svg" />
+    <Resource Include="Images\2085.svg" />
+    <Resource Include="Images\2100.svg" />
+    <Resource Include="Images\2101.svg" />
+    <Resource Include="Images\2102.svg" />
+    <Resource Include="Images\2103.svg" />
+    <Resource Include="Images\2104.svg" />
+    <Resource Include="Images\2105.svg" />
+    <Resource Include="Images\2106.svg" />
+    <Resource Include="Images\2107.svg" />
+    <Resource Include="Images\2108.svg" />
+    <Resource Include="Images\2109.svg" />
+    <Resource Include="Images\2111.svg" />
+    <Resource Include="Images\2120.svg" />
+    <Resource Include="Images\2121.svg" />
+    <Resource Include="Images\2122.svg" />
+    <Resource Include="Images\2123.svg" />
+    <Resource Include="Images\2124.svg" />
+    <Resource Include="Images\2125.svg" />
+    <Resource Include="Images\2126.svg" />
+    <Resource Include="Images\2127.svg" />
+    <Resource Include="Images\2128.svg" />
+    <Resource Include="Images\2129.svg" />
+    <Resource Include="Images\2130.svg" />
+    <Resource Include="Images\2131.svg" />
+    <Resource Include="Images\2132.svg" />
+    <Resource Include="Images\2133.svg" />
+    <Resource Include="Images\2134.svg" />
+    <Resource Include="Images\2135.svg" />
+    <Resource Include="Images\2150.svg" />
+    <Resource Include="Images\2151.svg" />
+    <Resource Include="Images\2152.svg" />
+    <Resource Include="Images\2153.svg" />
+    <Resource Include="Images\2154.svg" />
+    <Resource Include="Images\2155.svg" />
+    <Resource Include="Images\2156.svg" />
+    <Resource Include="Images\2157.svg" />
+    <Resource Include="Images\2158.svg" />
+    <Resource Include="Images\2159.svg" />
+    <Resource Include="Images\2160.svg" />
+    <Resource Include="Images\2161.svg" />
+    <Resource Include="Images\2162.svg" />
+    <Resource Include="Images\2163.svg" />
+    <Resource Include="Images\2164.svg" />
+    <Resource Include="Images\2165.svg" />
+    <Resource Include="Images\2166.svg" />
+    <Resource Include="Images\2190.svg" />
+    <Resource Include="Images\2191.svg" />
+    <Resource Include="Images\2192.svg" />
+    <Resource Include="Images\2193.svg" />
+    <Resource Include="Images\2200.svg" />
+    <Resource Include="Images\2201.svg" />
+    <Resource Include="Images\2202.svg" />
+    <Resource Include="Images\2203.svg" />
+    <Resource Include="Images\2204.svg" />
+    <Resource Include="Images\2205.svg" />
+    <Resource Include="Images\2207.svg" />
+    <Resource Include="Images\2208.svg" />
+    <Resource Include="Images\2209.svg" />
+    <Resource Include="Images\2210.svg" />
+    <Resource Include="Images\2211.svg" />
+    <Resource Include="Images\2212.svg" />
+    <Resource Include="Images\2213.svg" />
+    <Resource Include="Images\2214.svg" />
+    <Resource Include="Images\2215.svg" />
+    <Resource Include="Images\2216.svg" />
+    <Resource Include="Images\2217.svg" />
+    <Resource Include="Images\2218.svg" />
+    <Resource Include="Images\2300.svg" />
+    <Resource Include="Images\2301.svg" />
+    <Resource Include="Images\2302.svg" />
+    <Resource Include="Images\2303.svg" />
+    <Resource Include="Images\2304.svg" />
+    <Resource Include="Images\2305.svg" />
+    <Resource Include="Images\2306.svg" />
+    <Resource Include="Images\2307.svg" />
+    <Resource Include="Images\2308.svg" />
+    <Resource Include="Images\2309.svg" />
+    <Resource Include="Images\2311.svg" />
+    <Resource Include="Images\2312.svg" />
+    <Resource Include="Images\2313.svg" />
+    <Resource Include="Images\2314.svg" />
+    <Resource Include="Images\2315.svg" />
+    <Resource Include="Images\2316.svg" />
+    <Resource Include="Images\2317.svg" />
+    <Resource Include="Images\2318.svg" />
+    <Resource Include="Images\2319.svg" />
+    <Resource Include="Images\2320.svg" />
+    <Resource Include="Images\2321.svg" />
+    <Resource Include="Images\2322.svg" />
+    <Resource Include="Images\2323.svg" />
+    <Resource Include="Images\2324.svg" />
+    <Resource Include="Images\2325.svg" />
+    <Resource Include="Images\2326.svg" />
+    <Resource Include="Images\2327.svg" />
+    <Resource Include="Images\2328.svg" />
+    <Resource Include="Images\2330.svg" />
+    <Resource Include="Images\2331.svg" />
+    <Resource Include="Images\2332.svg" />
+    <Resource Include="Images\2333.svg" />
+    <Resource Include="Images\2341.svg" />
+    <Resource Include="Images\2343.svg" />
+    <Resource Include="Images\2345.svg" />
+    <Resource Include="Images\2346.svg" />
+    <Resource Include="Images\2348.svg" />
+    <Resource Include="Images\2349.svg" />
+    <Resource Include="Images\2350.svg" />
+    <Resource Include="Images\2351.svg" />
+    <Resource Include="Images\2352.svg" />
+    <Resource Include="Images\2353.svg" />
+    <Resource Include="Images\2354.svg" />
+    <Resource Include="Images\2355.svg" />
+    <Resource Include="Images\2356.svg" />
+    <Resource Include="Images\2357.svg" />
+    <Resource Include="Images\2358.svg" />
+    <Resource Include="Images\2359.svg" />
+    <Resource Include="Images\2360.svg" />
+    <Resource Include="Images\2361.svg" />
+    <Resource Include="Images\2362.svg" />
+    <Resource Include="Images\2363.svg" />
+    <Resource Include="Images\2364.svg" />
+    <Resource Include="Images\2365.svg" />
+    <Resource Include="Images\2366.svg" />
+    <Resource Include="Images\2367.svg" />
+    <Resource Include="Images\2368.svg" />
+    <Resource Include="Images\2369.svg" />
+    <Resource Include="Images\2370.svg" />
+    <Resource Include="Images\2371.svg" />
+    <Resource Include="Images\2372.svg" />
+    <Resource Include="Images\2373.svg" />
+    <Resource Include="Images\2374.svg" />
+    <Resource Include="Images\2375.svg" />
+    <Resource Include="Images\2376.svg" />
+    <Resource Include="Images\2377.svg" />
+    <Resource Include="Images\2378.svg" />
+    <Resource Include="Images\2379.svg" />
+    <Resource Include="Images\2380.svg" />
+    <Resource Include="Images\2381.svg" />
+    <Resource Include="Images\2382.svg" />
+    <Resource Include="Images\2383.svg" />
+    <Resource Include="Images\2384.svg" />
+    <Resource Include="Images\2385.svg" />
+    <Resource Include="Images\2386.svg" />
+    <Resource Include="Images\2387.svg" />
+    <Resource Include="Images\2388.svg" />
+    <Resource Include="Images\2389.svg" />
+    <Resource Include="Images\2390.svg" />
+    <Resource Include="Images\2391.svg" />
+    <Resource Include="Images\2392.svg" />
+    <Resource Include="Images\2393.svg" />
+    <Resource Include="Images\2394.svg" />
+    <Resource Include="Images\2395.svg" />
+    <Resource Include="Images\2396.svg" />
+    <Resource Include="Images\2397.svg" />
+    <Resource Include="Images\2398.svg" />
+    <Resource Include="Images\2399.svg" />
+    <Resource Include="Images\2400.svg" />
+    <Resource Include="Images\2409.svg" />
+    <Resource Include="Images\2411.svg" />
+    <Resource Include="Images\2412.svg" />
+    <Resource Include="Images\2413.svg" />
+    <Resource Include="Images\2414.svg" />
+    <Resource Include="Images\2415.svg" />
+    <Resource Include="Images\2416.svg" />
+    <Resource Include="Images\2417.svg" />
+    <Resource Include="Images\2418.svg" />
+    <Resource Include="Images\2419.svg" />
+    <Resource Include="Images\2420.svg" />
+    <Resource Include="Images\2421.svg" />
+    <Resource Include="Images\2422.svg" />
+    <Resource Include="Images\2423.svg" />
+    <Resource Include="Images\2424.svg" />
+    <Resource Include="Images\2425.svg" />
+    <Resource Include="Images\2426.svg" />
+    <Resource Include="Images\300-fill.svg" />
+    <Resource Include="Images\300.svg" />
+    <Resource Include="Images\301-fill.svg" />
+    <Resource Include="Images\301.svg" />
+    <Resource Include="Images\302-fill.svg" />
+    <Resource Include="Images\302.svg" />
+    <Resource Include="Images\303-fill.svg" />
+    <Resource Include="Images\303.svg" />
+    <Resource Include="Images\304-fill.svg" />
+    <Resource Include="Images\304.svg" />
+    <Resource Include="Images\305-fill.svg" />
+    <Resource Include="Images\305.svg" />
+    <Resource Include="Images\306-fill.svg" />
+    <Resource Include="Images\306.svg" />
+    <Resource Include="Images\307-fill.svg" />
+    <Resource Include="Images\307.svg" />
+    <Resource Include="Images\308-fill.svg" />
+    <Resource Include="Images\308.svg" />
+    <Resource Include="Images\309-fill.svg" />
+    <Resource Include="Images\309.svg" />
+    <Resource Include="Images\310-fill.svg" />
+    <Resource Include="Images\310.svg" />
+    <Resource Include="Images\311-fill.svg" />
+    <Resource Include="Images\311.svg" />
+    <Resource Include="Images\312-fill.svg" />
+    <Resource Include="Images\312.svg" />
+    <Resource Include="Images\313-fill.svg" />
+    <Resource Include="Images\313.svg" />
+    <Resource Include="Images\314-fill.svg" />
+    <Resource Include="Images\314.svg" />
+    <Resource Include="Images\315-fill.svg" />
+    <Resource Include="Images\315.svg" />
+    <Resource Include="Images\316-fill.svg" />
+    <Resource Include="Images\316.svg" />
+    <Resource Include="Images\317-fill.svg" />
+    <Resource Include="Images\317.svg" />
+    <Resource Include="Images\318-fill.svg" />
+    <Resource Include="Images\318.svg" />
+    <Resource Include="Images\350-fill.svg" />
+    <Resource Include="Images\350.svg" />
+    <Resource Include="Images\351-fill.svg" />
+    <Resource Include="Images\351.svg" />
+    <Resource Include="Images\399-fill.svg" />
+    <Resource Include="Images\399.svg" />
+    <Resource Include="Images\400-fill.svg" />
+    <Resource Include="Images\400.svg" />
+    <Resource Include="Images\401-fill.svg" />
+    <Resource Include="Images\401.svg" />
+    <Resource Include="Images\402-fill.svg" />
+    <Resource Include="Images\402.svg" />
+    <Resource Include="Images\403-fill.svg" />
+    <Resource Include="Images\403.svg" />
+    <Resource Include="Images\404-fill.svg" />
+    <Resource Include="Images\404.svg" />
+    <Resource Include="Images\405-fill.svg" />
+    <Resource Include="Images\405.svg" />
+    <Resource Include="Images\406-fill.svg" />
+    <Resource Include="Images\406.svg" />
+    <Resource Include="Images\407-fill.svg" />
+    <Resource Include="Images\407.svg" />
+    <Resource Include="Images\408-fill.svg" />
+    <Resource Include="Images\408.svg" />
+    <Resource Include="Images\409-fill.svg" />
+    <Resource Include="Images\409.svg" />
+    <Resource Include="Images\410-fill.svg" />
+    <Resource Include="Images\410.svg" />
+    <Resource Include="Images\456-fill.svg" />
+    <Resource Include="Images\456.svg" />
+    <Resource Include="Images\457-fill.svg" />
+    <Resource Include="Images\457.svg" />
+    <Resource Include="Images\499-fill.svg" />
+    <Resource Include="Images\499.svg" />
+    <Resource Include="Images\500-fill.svg" />
+    <Resource Include="Images\500.svg" />
+    <Resource Include="Images\501-fill.svg" />
+    <Resource Include="Images\501.svg" />
+    <Resource Include="Images\502-fill.svg" />
+    <Resource Include="Images\502.svg" />
+    <Resource Include="Images\503-fill.svg" />
+    <Resource Include="Images\503.svg" />
+    <Resource Include="Images\504-fill.svg" />
+    <Resource Include="Images\504.svg" />
+    <Resource Include="Images\507-fill.svg" />
+    <Resource Include="Images\507.svg" />
+    <Resource Include="Images\508-fill.svg" />
+    <Resource Include="Images\508.svg" />
+    <Resource Include="Images\509-fill.svg" />
+    <Resource Include="Images\509.svg" />
+    <Resource Include="Images\510-fill.svg" />
+    <Resource Include="Images\510.svg" />
+    <Resource Include="Images\511-fill.svg" />
+    <Resource Include="Images\511.svg" />
+    <Resource Include="Images\512-fill.svg" />
+    <Resource Include="Images\512.svg" />
+    <Resource Include="Images\513-fill.svg" />
+    <Resource Include="Images\513.svg" />
+    <Resource Include="Images\514-fill.svg" />
+    <Resource Include="Images\514.svg" />
+    <Resource Include="Images\515-fill.svg" />
+    <Resource Include="Images\515.svg" />
+    <Resource Include="Images\800.svg" />
+    <Resource Include="Images\801.svg" />
+    <Resource Include="Images\802.svg" />
+    <Resource Include="Images\803.svg" />
+    <Resource Include="Images\804.svg" />
+    <Resource Include="Images\805.svg" />
+    <Resource Include="Images\806.svg" />
+    <Resource Include="Images\807.svg" />
+    <Resource Include="Images\900-fill.svg" />
+    <Resource Include="Images\900.svg" />
+    <Resource Include="Images\901-fill.svg" />
+    <Resource Include="Images\901.svg" />
+    <Resource Include="Images\999-fill.svg" />
+    <Resource Include="Images\999.svg" />
+    <Resource Include="Images\9998.svg" />
+    <Resource Include="Images\9999.svg" />
+    <Resource Include="ILLink\ILLink.Descriptors.LibraryBuild.xml" />
+    <Content Include="Images\qweather-fill.svg" />
+    <Content Include="Images\qweather.svg" />
+    <Content Include="NLog.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="NLog.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.119.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.119.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" />
+  <Import Project="..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.119.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets" Condition="Exists('..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.119.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" />
+</Project>
