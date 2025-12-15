@@ -73,8 +73,8 @@ namespace Signet.ViewModel
             {
                 Icon = new PackIconFontAwesome() { Kind = PackIconFontAwesomeKind.UserInjuredSolid },
                 Label = "用户管理",
-                NavigationType = typeof(UserManage_View),
-                NavigationDestination = new Uri("View/UserManage_View.xaml", UriKind.RelativeOrAbsolute)
+                NavigationType = typeof(Users_View),
+                NavigationDestination = new Uri("View/Users_View.xaml", UriKind.RelativeOrAbsolute)
             });
 
 

@@ -160,7 +160,7 @@
 
 
                 <TextBox Margin="20"  Width="200" Height="30" Style="{StaticResource UserNameTextBoxStyle}"
-                         Text="{Binding mLogin_Window_Model.UserName, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged,
+                         Text="{Binding mLogin_Window_Model.UserCode, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged,
                         ValidatesOnDataErrors=True, NotifyOnValidationError=True}"></TextBox>
 
                 <PasswordBox Margin="10"  Width="200" Height="30" Style="{StaticResource PasswordBoxStyle}"

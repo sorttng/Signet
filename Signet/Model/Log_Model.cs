@@ -8,7 +8,7 @@ using Signet.SqlSugarModel;
 using System.Collections.ObjectModel;
 namespace Signet.Model
 {
-    public  class Log_Model: ObservableObject
+    public class Log_Model: ObservableObject
     {
         /// <summary>
         /// 日志查询开始时间

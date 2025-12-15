@@ -57,10 +57,11 @@
                   ScrollViewer.VerticalScrollBarVisibility="Visible"                    
                   ScrollViewer.HorizontalScrollBarVisibility="Visible">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="时间" Binding="{Binding Time,ConverterCulture=zh-cn}" Width="*" />
+                <DataGridTextColumn Header="序号" Binding="{Binding RowIndex}" Width="auto" />
+                <DataGridTextColumn Header="时间" Binding="{Binding Logged,ConverterCulture=zh-cn}" Width="*" />
                 <DataGridTextColumn Header="等级" Binding="{Binding Level}" Width="*" />
                 <DataGridTextColumn Header="日志内容" Binding="{Binding Message}" Width="*" />
-                <DataGridTextColumn Header="用户" Binding="{Binding UserID}" Width="*" />
+                <DataGridTextColumn Header="用户" Binding="{Binding UserName}" Width="*" />
             </DataGrid.Columns>
         </DataGrid>
 

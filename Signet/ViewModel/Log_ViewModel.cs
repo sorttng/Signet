@@ -109,7 +109,7 @@ namespace Signet.ViewModel
                 int totalPage = 0;
                 mLog_Model.LogList = new System.Collections.ObjectModel.ObservableCollection<Nlog_Model>
                     (SqlSugarHelper.mDB.Queryable<Nlog_Model>()
-                    .Where(a => a.Time >= mLog_Model.LogStartTime && a.Time <= mLog_Model.LogEndTime)
+                    .Where(a => a.Logged >= mLog_Model.LogStartTime && a.Logged <= mLog_Model.LogEndTime)
                     .ToPageList(curPage, pageSize, ref totalCount, ref totalPage));
                 TotalItems = totalCount;
                 logger.Info("日志查询成功！");
