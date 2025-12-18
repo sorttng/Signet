@@ -64,8 +64,6 @@ namespace Signet.ViewModel
                 mUserManage_Model.Header = "用户信息新增";
 
                 mUserManage_Model.UserName = string.Empty;
-                mUserManage_Model.Selected_Depar = new Depart_Table();
-                mUserManage_Model.Selected_Role = new Role_Table();
                 mUserManage_Model.Birthday = new DateTime(2001, 1, 1);
                 mUserManage_Model.PhoneNum = string.Empty;
                 mUserManage_Model.Email = string.Empty;
@@ -124,6 +122,13 @@ namespace Signet.ViewModel
         /// </summary>
         private void _Confirm()
         {
+            if (!mUserManage_Model.IsValidated)
+            {
+                ShowMessage("提示!", mUserManage_Model.dataErrors.First().Value);
+                logger.Info(mUserManage_Model.dataErrors.First().Value);
+                return;
+            }
+
             if (OptionType == "Add")
             {
                 SqlSugarModel.User_Table user_Table = new SqlSugarModel.User_Table()
@@ -203,7 +208,6 @@ namespace Signet.ViewModel
         }
 
         #endregion
-
 
         #region 关闭窗口函数
         private bool toClose = false;

@@ -76,7 +76,7 @@ namespace Signet.ViewModel
                 UserInfoList = new System.Collections.ObjectModel.ObservableCollection<UserInfo_Model>(),
             };
 
-            DataQuery(1, 50);
+            //DataQuery(1, 50);
 
             // 监听分页变化
             this.PropertyChanged += (s, e) =>
@@ -240,7 +240,6 @@ namespace Signet.ViewModel
         }
         #endregion
 
-
         #region 编辑
         private RelayCommand<long> _Updata_Command;
         public RelayCommand<long> Updata_Command
@@ -264,7 +263,6 @@ namespace Signet.ViewModel
             DataQuery(1, 50);
         }
         #endregion
-
 
         #region 修改个人密码
         private RelayCommand _ChangePassword_Command;
@@ -336,8 +334,5 @@ namespace Signet.ViewModel
             #endregion
         }
         #endregion
-
-
-
     }
 }

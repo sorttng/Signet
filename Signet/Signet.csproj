@@ -381,7 +381,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Common\AuthorizationItemDefine.cs" />
+    <Compile Include="Common\AuthorizationManager.cs" />
     <Compile Include="Common\ComputerInfoHelper.cs" />
     <Compile Include="Common\ConfigFileHelper.cs" />
     <Compile Include="Common\CsvHelper.cs" />
@@ -402,11 +402,13 @@
     <Compile Include="Common\SoftwareInfoHelper.cs" />
     <Compile Include="Common\SqlSugarHelper.cs" />
     <Compile Include="Common\UserInfoHelper.cs" />
+    <Compile Include="Common\ValidateModelBase.cs" />
     <Compile Include="Common\WeatherHelper.cs" />
     <Compile Include="Common\WindowBehavior.cs" />
     <Compile Include="Common\WindowManager.cs" />
     <Compile Include="Converter\ThemeConverter.cs" />
     <Compile Include="Model\About_Model.cs" />
+    <Compile Include="Model\AuthorityCfg_Model.cs" />
     <Compile Include="Model\Home_Model.cs" />
     <Compile Include="Model\Login_Window_Model.cs" />
     <Compile Include="Model\Log_Model.cs" />
@@ -436,6 +438,7 @@
       <DependentUpon>WearherControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\About_ViewModel.cs" />
+    <Compile Include="ViewModel\AuthorityCfg_ViewModel.cs" />
     <Compile Include="ViewModel\Home_ViewModel.cs" />
     <Compile Include="ViewModel\Login_Window_ViewModel.cs" />
     <Compile Include="ViewModel\Log_ViewModel.cs" />
@@ -447,6 +450,9 @@
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="View\About_View.xaml.cs">
       <DependentUpon>About_View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AuthorityCfg_View.xaml.cs">
+      <DependentUpon>AuthorityCfg_View.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Home_View.xaml.cs">
       <DependentUpon>Home_View.xaml</DependentUpon>
@@ -499,6 +505,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\About_View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AuthorityCfg_View.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -216,9 +216,10 @@ namespace Signet.ViewModel
                 RoleCode = uinfo.urolecode,
                 RoleName = uinfo.urolename,
                 Authorities = uinfo.atauthority == null ? new List<string>() : uinfo.atauthority.Split(',').ToList(),
-            };                
+            };
 
-            AuthorizationItemDefine.Default.RiseProperty();//刷新属性
+            AuthorizationManager.Instance.LoadUserPermission(UserInfo.LogedUserInfo.RoleID);
+
             //传参给nlog配置文件
             MappedDiagnosticsLogicalContext.Set("userId", info.UserID);
             MappedDiagnosticsLogicalContext.Set("userName", info.UserName);

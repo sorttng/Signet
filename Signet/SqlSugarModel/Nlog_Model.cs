@@ -73,7 +73,7 @@ namespace Signet.SqlSugarModel
         /// 默认值:
         ///</summary>
         [SugarColumn(ColumnName = "UserID")]
-        public string UserID { get; set; }
+        public long UserID { get; set; }
 
         /// <summary>
         /// 备  注:用户名

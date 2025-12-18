@@ -77,6 +77,14 @@ namespace Signet.ViewModel
                 NavigationDestination = new Uri("View/Users_View.xaml", UriKind.RelativeOrAbsolute)
             });
 
+            this.Menu.Add(new MenuItem()
+            {
+                Icon = new PackIconFontAwesome() { Kind = PackIconFontAwesomeKind.SquarePersonConfinedSolid},
+                Label = "权限配置",
+                NavigationType = typeof(AuthorityCfg_View),
+                NavigationDestination = new Uri("View/AuthorityCfg_View.xaml", UriKind.RelativeOrAbsolute)
+            });
+
 
             this.Menu.Add(new MenuItem()
             {

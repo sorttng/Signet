@@ -48,6 +48,8 @@ namespace Signet.ViewModel
             SimpleIoc.Default.Register<About_ViewModel>();
             SimpleIoc.Default.Register<Log_ViewModel>();
             SimpleIoc.Default.Register<Users_ViewModel>();
+            SimpleIoc.Default.Register<AuthorityCfg_ViewModel>();
+
 
         }
 
@@ -108,8 +110,13 @@ namespace Signet.ViewModel
             }
         }
 
-
-        
+        public AuthorityCfg_ViewModel AuthorityCfg
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<AuthorityCfg_ViewModel>();
+            }
+        }
         public static void Cleanup()
         {
             // TODO Clear the ViewModels

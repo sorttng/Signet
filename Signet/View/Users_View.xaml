@@ -11,6 +11,7 @@
       xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
       xmlns:Dialog="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
       Dialog:DialogParticipation.Register="{Binding}"
+      xmlns:c="clr-namespace:Signet.Common"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Users_View">
@@ -29,11 +30,13 @@
                 <ColumnDefinition Width="*"/>
                 <!-- 第一列占据剩余空间 -->
                 <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+
             </Grid.ColumnDefinitions>
 
             <StackPanel Grid.Column="0" Orientation="Horizontal">
 
-                
+
                 <!--<Button Style="{StaticResource HeadButtonStyle}" Content="删 除" Background="OrangeRed">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="Click">
@@ -46,7 +49,8 @@
                 <TextBox Width="200" Height=" 35" Margin="50,5,5,5" 
                          mah:TextBoxHelper.Watermark ="模糊查询请输入关键词" VerticalContentAlignment="Center"
                          Text="{Binding mUsers_Model.QueryConditions,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"></TextBox>
-                <Button Style="{StaticResource HeadButtonStyle}" Content="查 询">
+                <Button Style="{StaticResource HeadButtonStyle}" Content="查 询"
+                        IsEnabled="{Binding Source={x:Static c:AuthorizationManager.Instance},Path=[UserQuery]}">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="Click">
                             <i:InvokeCommandAction Command="{Binding Search_Command}">
@@ -55,7 +59,8 @@
                     </i:Interaction.Triggers>
                 </Button>
 
-                <Button Style="{StaticResource HeadButtonStyle}" Content="新 增" >
+                <Button Style="{StaticResource HeadButtonStyle}" Content="新 增" 
+                        IsEnabled="{Binding Source={x:Static c:AuthorizationManager.Instance},Path=[UserInsert]}">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="Click">
                             <i:InvokeCommandAction Command="{Binding Insert_Command}">
@@ -65,7 +70,7 @@
                 </Button>
             </StackPanel>
 
-            <Button Grid.Column="1" Style="{StaticResource HeadButtonStyle}" Content="修改个人密码" HorizontalAlignment="Right">
+            <Button Grid.Column="2" Style="{StaticResource HeadButtonStyle}" Content="修改个人密码" HorizontalAlignment="Right">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Click">
                         <i:InvokeCommandAction Command="{Binding ChangePassword_Command}">
@@ -95,7 +100,8 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                <Button Style="{StaticResource DatagridButtonStyle }" Background="Green">
+                                <Button Style="{StaticResource DatagridButtonStyle }" Background="Green"
+                                        IsEnabled="{Binding Source={x:Static c:AuthorizationManager.Instance},Path=[UserInsert]}">
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="Click">
                                             <i:InvokeCommandAction Command="{Binding DataContext.Updata_Command, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGrid}}"
@@ -108,7 +114,8 @@
                                     </StackPanel>
                                 </Button>
 
-                                <Button Style="{StaticResource DatagridButtonStyle }" Background="Red">
+                                <Button Style="{StaticResource DatagridButtonStyle }" Background="Red"
+                                        IsEnabled="{Binding Source={x:Static c:AuthorizationManager.Instance},Path=[UserDelete]}">
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="Click">
                                             <i:InvokeCommandAction Command="{Binding DataContext.Delete_Command, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGrid}}"
