@@ -26,7 +26,7 @@ using Modbus.Device;
 using Modbus.Serial;
 using Modbus.Utility;
 using NLog.Targets;
-
+using System.IO;
 namespace Signet.ViewModel
 {
     public class MainWindow_ViewModel : ViewModelBase//BindableBase
@@ -231,8 +231,11 @@ namespace Signet.ViewModel
                     string selectedFilePath = openFileDialog.FileName;
                     try
                     {
-                        mMain_Model.UserHeadSculpturePath = selectedFilePath;
-                        ConfigFileHelper.ConfigSet("UserHeadSculpturePath", selectedFilePath);
+                        string dstPath = Path.Combine(System.Windows.Forms.Application.StartupPath, "Imgs", Path.GetFileName(selectedFilePath));
+                        File.Copy(selectedFilePath, dstPath);
+
+                        mMain_Model.UserHeadSculpturePath = dstPath;
+                        ConfigFileHelper.ConfigSet("UserHeadSculpturePath", dstPath);
                     }
                     catch
                     {
