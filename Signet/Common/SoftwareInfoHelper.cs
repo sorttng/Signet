@@ -23,7 +23,7 @@ namespace Signet.Common
         //联系方式
         public static readonly string ContactInfo = "联系方式：嘉兴市南湖区凌公塘路3439号";
         //公司名称
-        public static readonly string Company = "浙江创源环境科技股份有限公司";
+        public static readonly string Company = "浙江XXX科技股份有限公司";
         //版本号
         public static readonly string Version = ConfigFileHelper.ConfigRead("Ver 1.00");
         //默认头像路径
